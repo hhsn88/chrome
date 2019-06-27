@@ -1,39 +1,24 @@
 $(function () {
-    chrome.storage.sync.get('position', (data) => {
-        $('#scrollPosition').text(data.position);
-    });
-
     $('#saveProgBtn').click(function () {
-        // Save current scroll position
+        // Send a message to the active tab
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.tabs.executeScript(
-                tabs[0].id,
-                {
-                    code: 'chrome.storage.sync.get("scrolls", (data) => {  \
-                            var scrolls; \
-                            if (data.scrolls) { \
-                                scrolls = data.scrolls; \
-                                const idx = scrolls.findIndex((v,i,arr) => Object.keys(v)[0] == document.URL); \
-                                if (idx == -1) { \
-                                    var obj = {}; \
-                                    obj[document.URL] = {pos: Math.trunc(window.scrollY)}; \
-                                    scrolls.push(obj); \
-                                } else { \
-                                    scrolls[idx].pos = window.scrollY; \
-                                } \
-                            } else { \
-                                var obj = {}; \
-                                obj[document.URL] = {pos: Math.trunc(window.scrollY)}; \
-                                scrolls = [obj]; \
-                            }\
-                            chrome.storage.sync.set({scrolls}, () => {}); \
-                        });'
-                }
-            );
+            var activeTab = tabs[0];
+            chrome.tabs.sendMessage(activeTab.id, { msg: "save_scroll_pos" });
         });
     });
 
-    $('#xxx').click(function () {
-        chrome.storage.sync.remove("scrolls", ()=>{});
+    $('#clearBtn').click(function () {
+        chrome.storage.sync.get(null, (data) => {
+            if (data) {
+                for (let key of Object.keys(data)) {
+                    if (key.startsWith('ProgTrkr_')) {
+                        chrome.storage.sync.remove(key, () => { });
+                    }
+                }
+            }
+        })
+    });
+    $('#openPrTrBtn').click(function () {
+        chrome.runtime.sendMessage({ msg: "open_prog_trkr" })
     });
 });

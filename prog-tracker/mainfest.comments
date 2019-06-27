@@ -1,0 +1,10 @@
+	"event_rules": [{
+		"event": "declarativeContent.onPageChanged",
+		"actions": [{
+			"type": "declarativeContent.ShowPageAction"
+		}],
+		"conditions": [{
+			"type": "declarativeContent.PageStateMatcher",
+			"matches": ["<all_urls>"]
+		}]
+	}],
