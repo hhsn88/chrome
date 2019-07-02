@@ -2,7 +2,7 @@
 	"name": "ReadingTrkr",
 	"version": "1.0",
 	"description": "Web Article Reading Progress Tracker",
-	"permissions": ["activeTab", "declarativeContent", "storage"],
+	"permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
 	"background": {
 		"scripts": ["background.js"],
 		"persistent": false

@@ -15,10 +15,29 @@ $(function () {
                         chrome.storage.sync.remove(key, () => { });
                     }
                 }
+                // Refresh reading list page
+                chrome.tabs.query({ title: 'Reading Progress Tracker' }, (tabs) => {
+                    if (tabs.length > 0) { 
+                        chrome.tabs.reload(tabs[0].id);
+                    }
+                });
             }
-        })
+        });
     });
     $('#openPrTrBtn').click(function () {
         chrome.runtime.sendMessage({ msg: "open_prog_trkr" })
     });
 });
+
+(function () {
+    chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
+        if (request.msg === "scroll_saved") {
+            // Refresh reading list page
+            chrome.tabs.query({ title: 'Reading Progress Tracker' }, (tabs) => {
+                if (tabs.length > 0) { 
+                    chrome.tabs.reload(tabs[0].id);
+                }
+            });
+        } 
+    });
+})()
