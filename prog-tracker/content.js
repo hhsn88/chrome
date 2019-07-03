@@ -29,5 +29,11 @@ chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
         if (scroll_y) {
             window.scrollTo(window.scrollX, scroll_y)
         }
+        
+        var elem = document.createElement('div');
+        elem.style.cssText = `position:fixed; top:8%; right:4%; width:30px; height:30px; line-height:25px; text-align:center; opacity:.8; 
+                              z-index:100; background:#FFFFFF; border:none; font-size:2rem; text-color:#aec0ec; border-radius:7px;`;
+        elem.innerHTML = "+";
+        document.body.appendChild(elem);       
     }
 })()
