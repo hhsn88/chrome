@@ -45,18 +45,17 @@ $(function () {
         var t = new Date(time);
         var urlDomain = extractDomain(url);
         return `
-        <div style="display: flex; flex-direction: column; word-break: break-all; padding-left: 10px; padding-top: 15px; position: relative; font-size: 15px;">
+        <div style="display: flex; flex-direction: column; word-break: break-all; padding: 0.5%; position: relative; font-size: 1.2em;">
             <div style="width: 50%">
                 <img class="cross" src="images/cross.png" 
-                     style="visibility: hidden; top: 10px; left: 0px; width: 14px; height: 13px; 
-                            vertical-align: middle; padding-top: 2px; cursor: pointer;">
+                     style="visibility: hidden; width: 1rem; vertical-align: middle; cursor: pointer;">
                 <img src="https://www.google.com/s2/favicons?domain=${urlDomain}" 
-                     style="top: 0px; left: 25px; width: 16px; height: 16px; vertical-align: middle;">
-                <a href="${url}" target="_blank" style="padding-right: 12px; text-decoration: none; cursor: pointer; color: #234da7;">
+                     style="left: 25px; width: 1.3em; height: 1.3em; vertical-align: middle;">
+                <a href="${url}" target="_blank" style="padding-left: .25em; padding-right: 1em; text-decoration: none; cursor: pointer; color: #234da7;">
                     <b>${urlDomain.replace('www.', '').split('.')[0].toUpperCase()}</b> ${title}&nbsp
                 </a>
             </div>
-            <span style="padding-left: 31px; color: #a0a0b5; font-size: 12px"> · ${getTimeString(t)} · ${getTimeAgo(new Date() - t)} ·</span>
+            <span style="padding-left: 4em; color: #a0a0b5; font-size: 12px"> · ${getTimeString(t)} · ${getTimeAgo(new Date() - t)} ·</span>
         </div>`;
     }
 
