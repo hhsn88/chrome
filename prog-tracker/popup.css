@@ -1,6 +1,12 @@
 body {
+    display: flex;
+    flex-direction: column;
     height: 100px;
-    width: 300px;
+    width: 350px;
+}
+
+.title {
+    align-self: center;
 }
 
 .buttons {
