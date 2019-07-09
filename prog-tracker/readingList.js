@@ -82,7 +82,7 @@ $(function () {
     // Clear button click handler
     $('#clearBtn').click(function () {
         // Verify with user
-        if (confirm("Are you sure you want to clear your reading list?\n(This cannot be undone!)")) {
+        if (confirm("Are you sure you want to clear your reading list?\n* All progress will be deleted !! *")) {
             // User confirmed
             chrome.storage.sync.get(null, (data) => {
                 if (data) {

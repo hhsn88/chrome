@@ -1,7 +1,7 @@
 {
-	"name": "ReadingTrkr",
+	"name": "Reading Progress Tracker",
 	"version": "1.0",
-	"description": "Web Article Reading Progress Tracker",
+	"description": "Convenietly Save Your Web Articles' Reading Progress Across Devices",
 	"permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
 	"background": {
 		"scripts": ["background.js"],
