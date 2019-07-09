@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
         chrome.tabs.query({}, (tabs) => {
             // Check if already opened
             for (let i = 0; i < tabs.length; i++) {
-                if (tabs[i].url === 'chrome-extension://afccefgidedpplolmoneomagdckofajd/readingList.html') {
+                if (tabs[i].url === 'chrome-extension://' + chrome.runtime.id + '/readingList.html') {
                     chrome.tabs.update(tabs[i].id, {active: true});
                     return;
                 }
