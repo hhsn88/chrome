@@ -3,31 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="readingList.css">
     <script src="jquery-3.4.1.min.js"></script>
     <script src="readingList.js"></script>
     <title>Reading Progress Tracker</title>
-    <style>
-        h1 { padding-left: 20px; }
-        #sitesList {
-            padding-right: 20px; padding-left: 12px; padding-top: 12px;
-        }
-        .btn-clear { 
-            margin-left: 40px; 
-            margin-top: 20px; 
-            border: none; 
-            outline: none;
-            background: transparent;
-            color: #888;
-            transition: color 0.25s ease-in-out;
-        }
-        .btn-clear:hover {
-            color: #000;
-            transition-duration: 0.25s;
-        }
-    </style>
 </head>
 <body>
-    <h1>Reading Progress Tracker</h1>
+    <h1 class="gamma lato thin uppercase ls-large">Reading Progress Tracker</h1>
+    <hr>
     <div id="sitesList">        
     </div>
     <button id="clearBtn" class="btn-clear">Clear List</button>

@@ -1,0 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400|Playfair+Display:400,700,400italic|Libre+Baskerville:400,700,400italic|Muli:300,400|Open+Sans:400,300,700|Oswald:400,700|Raleway:400,100,300,700|Montserrat:400,700|Merriweather:400,300,300italic,400italic,700|Bree+Serif|Vollkorn:400italic,400,700|Abril+Fatface|Cardo:400,400italic);
+
+h1 { 
+    font-size: 2.2rem;
+    padding-left: 40px; 
+}
+
+#sitesList {
+    padding-right: 20px; padding-left: 12px; padding-top: 12px;
+}
+.btn-clear { 
+    margin-left: 40px; 
+    margin-top: 20px; 
+    border: none; 
+    outline: none;
+    background: transparent;
+    color: #888;
+    transition: color 0.35s ease-in-out;
+}
+.btn-clear:hover {
+    color: #000;
+    transition-duration: 0.35s;
+}
+.lato{font-family: 'Lato'}
+.thin{font-weight: 100;}
+.bold{font-weight: 700;}
+.uppercase{text-transform: uppercase;}
+.ls-large{letter-spacing: 8px;}
