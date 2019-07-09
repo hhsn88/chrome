@@ -59,7 +59,7 @@ $(function () {
         </div>`;
     }
 
-    // Retturns time ago formatted as '<days>d <hours>h <minutes>m ago'
+    // Returns time ago formatted as '<days>d <hours>h <minutes>m ago'
     const getTimeAgo = (milis) => {
         const days = Math.floor(milis / (3600000 * 24));
         const hours = Math.floor(milis / 3600000) % 24;
@@ -78,6 +78,29 @@ $(function () {
         dmn = dmn.split('?')[0];
         return dmn;
     }
+
+    // Clear button click handler
+    $('#clearBtn').click(function () {
+        // Verify with user
+        if (confirm("Are you sure you want to clear your reading list?\n(This cannot be undone!)")) {
+            // User confirmed
+            chrome.storage.sync.get(null, (data) => {
+                if (data) {
+                    for (let key of Object.keys(data)) {
+                        if (key.startsWith('ProgTrkr_')) {
+                            chrome.storage.sync.remove(key, () => { });
+                        }
+                    }
+                    // Refresh reading list page
+                    chrome.tabs.query({ title: 'Reading Progress Tracker' }, (tabs) => {
+                        if (tabs.length > 0) { 
+                            chrome.tabs.reload(tabs[0].id);
+                        }
+                    });
+                }
+            });
+        } 
+    });
 
     // Set timer to refresh the list periodically (to update time ago)
     setInterval(() => {
