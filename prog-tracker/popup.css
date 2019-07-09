@@ -36,6 +36,10 @@ body {
 .button {
     font-size: .8rem;
     margin: 5px;
+    background: rgba(170, 170, 170, 0.418);
+    border: none;
+    outline: none;
+    height: 30px
 }
 
 .btn-save:hover:after {
