@@ -52,7 +52,7 @@ $(function () {
                 <img src="https://www.google.com/s2/favicons?domain=${urlDomain}" 
                      style="left: 25px; width: 1.3em; height: 1.3em; vertical-align: middle;">
                 <a href="${url}" target="_blank" style="padding-left: .25em; padding-right: 1em; text-decoration: none; cursor: pointer; color: #234da7;">
-                    <b>${urlDomain.replace('www.', '').split('.')[0].toUpperCase()}</b> ${title}&nbsp
+                    <b>${urlDomain.replace('www.', '').split('/')[0].toUpperCase()}</b> ${title}&nbsp
                 </a>
             </div>
             <span style="padding-left: 4em; color: #a0a0b5; font-size: 12px"> · ${getTimeString(t)} · ${getTimeAgo(new Date() - t)} ·</span>
