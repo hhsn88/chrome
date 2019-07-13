@@ -24,14 +24,17 @@ chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
             }
         });
     }
+    // Notify ReadingList that the page finished loading
+    if( request.msg.startswith("prog_trkr_scrollTo:") ) {
+        var scrollTo = parseeInt(request.msg.split(':')[1]);
+        if (scrollTo) {
+            window.scrollTo(window.scrollX, scrollTo);
+        }
+    }
 });
 
 (function () {
-    const idx = document.URL.indexOf('?prg_trkr=');
-    if (idx >= 0) {
-        const scroll_y = parseInt(document.URL.substr(idx + '?prg_trkr='.length));
-        if (scroll_y) {
-            window.scrollTo(window.scrollX, scroll_y)
-        }
-    }
+    chrome.runtime.sendMessage({ msg: "prog_trkr_rqst_scroll" }, (response) => {
+        window.scrollTo(window.scrollX, response.scroll_y);
+    });
 })()

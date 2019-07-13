@@ -8,7 +8,7 @@ $(function () {
     });
 
     $('#openPrTrBtn').click(function () {
-        chrome.runtime.sendMessage({ msg: "open_prog_trkr" })
+        chrome.runtime.sendMessage({ msg: "open_prog_trkr" });
     });
 });
 

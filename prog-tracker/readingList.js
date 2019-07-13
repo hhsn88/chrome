@@ -1,4 +1,5 @@
 $(function () {
+    var scrolls = {};
     // Updates and populates the list
     const updateUrls = () => {
         chrome.storage.sync.get(null, (data) => {
@@ -6,12 +7,13 @@ $(function () {
                 var keys = Object.keys(data).filter( (key) => key.startsWith('ProgTrkr_'))
                                             .sort( (k1, k2) => (new Date(data[k1].time) - new Date(data[k2].time)));
                 for (let key of keys) {
-                    const url = key.substr('ProgTrkr_'.length) + '?prg_trkr=' + data[key].scroll;
+                    const url = key.substr('ProgTrkr_'.length);
                     $('#sitesList').prepend(
                         getTemplate(data[key].title, 
                                     url, 
                                     data[key].time)
                     );
+                    scrolls[url] = data[key].scroll;
                 }
                 // Register mouse events
                 $('#sitesList').children('div div').each( (i, el) => {
@@ -110,4 +112,12 @@ $(function () {
 
     // Populate list at page open
     updateUrls();
+
+    // Listen for scroll request message
+    chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
+        if (request.msg === "prog_trkr_rqst_scroll") {
+            sendResponse({ scroll_y: scrolls[sender.url] });
+            // chrome.runtime.sendMessage({ msg: "prog_trkr_scrollTo:" + scrolls[sender.url] });
+        }
+    });
 });
