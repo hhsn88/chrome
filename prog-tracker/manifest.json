@@ -2,7 +2,12 @@
 	"name": "Reading Progress Tracker",
 	"version": "1.02",
 	"description": "Convenietly Save Your Web Articles' Reading Progress Across Devices",
-	"permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
+	"permissions": [
+		"tabs",
+		"activeTab", 
+		"declarativeContent", 
+		"storage"
+],
 	"background": {
 		"scripts": ["background.js"],
 		"persistent": false
@@ -18,7 +23,8 @@
 	},
 	"content_scripts": [{
 		  "matches": [
-			"<all_urls>"
+			"http://*/*",
+			"https://*/*"
 		  ],
 		  "js": ["content.js"]
 		}
