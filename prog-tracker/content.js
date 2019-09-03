@@ -2,11 +2,7 @@ chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
     if( request.msg === "save_scroll_pos" ) {
         chrome.storage.sync.get(null, (data) => {  
             if (data) { 
-                // Remove '?prg_trkr=' if present
-                const idx = document.URL.indexOf('?prg_trkr=');
-                var url = idx > 0 ? document.URL.substring(0, idx) : document.URL;
-                // Remove '#' if present
-                url = url.split('#')[0];
+                var url = document.URL.split('#')[0]; // Remove '#' if present
                 // Create / Update entry
                 data['ProgTrkr_' + url] = {
                     scroll: Math.trunc(window.scrollY),
